@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.4.1)
+  - IQKeyboardManager (6.5.6)
+  - Kingfisher (6.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - IQKeyboardManager
+  - Kingfisher (~> 6.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManager
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  Kingfisher: 13f6e68c928eb50439b5cb2ea75d6035018438ea
+
+PODFILE CHECKSUM: 2768ee36d61367fcea99e36a69ff5c0054ac9c97
+
+COCOAPODS: 1.10.1
