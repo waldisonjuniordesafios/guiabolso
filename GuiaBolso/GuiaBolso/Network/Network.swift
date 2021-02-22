@@ -24,7 +24,7 @@ class Network {
                 completion(nil, response.error)
             }
             do {
-                let result = try JSONDecoder().decode(Category.self, from: response.data!)
+                let result = try JSONDecoder().decode(Category.self, from: response.data!)  
                     completion(result, nil)
             } catch {
                 print("Erro decoding == \(Error.self)")
