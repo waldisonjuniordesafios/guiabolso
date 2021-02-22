@@ -64,11 +64,17 @@ class CategorieScreenVC: UIViewController {
     fileprivate func getCategories() {
         let router = Constants.baseURL + EndPoint.categorie.rawValue
         Network.shared.getCategorie(router: router) { (data, error) in
-            guard error == nil else{
-                return
+//            guard error == nil else { return }
+
+            if data == nil {
+                let alert = UIAlertController(title: "Error", message: "Service unavailable, try later!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("Error")
+            } else {
+                self.categories.append(contentsOf: data!)
+                self.searchCategories.append(contentsOf: data!)
             }
-            self.categories.append(contentsOf: data!)
-            self.searchCategories.append(contentsOf: data!)
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()

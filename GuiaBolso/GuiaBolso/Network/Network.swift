@@ -20,14 +20,14 @@ class Network {
         AF.request(router).response { response in
             debugPrint(response)
             if response.response?.statusCode != 200 {
-                print("Service unavailable, try later!")
                 completion(nil, response.error)
             }
             do {
-                let result = try JSONDecoder().decode(Category.self, from: response.data!)  
+                let result = try JSONDecoder().decode(Category.self, from: response.data!)
                     completion(result, nil)
             } catch {
                 print("Erro decoding == \(Error.self)")
+                completion(nil, response.error)
             }
         }
     }
