@@ -42,7 +42,6 @@ class CategorieScreenVC: UIViewController {
         return .lightContent
     }
 
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -58,14 +57,12 @@ class CategorieScreenVC: UIViewController {
 
         self.tableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
 
-        self.vwCircle.layer.cornerRadius = 16/2
+        self.vwCircle.layer.cornerRadius = 8
     }
 
     fileprivate func getCategories() {
         let router = Constants.baseURL + EndPoint.categorie.rawValue
         Network.shared.getCategorie(router: router) { (data, error) in
-//            guard error == nil else { return }
-
             if data == nil {
                 let alert = UIAlertController(title: "Error", message: "Service unavailable, try later!", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))

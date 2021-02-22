@@ -10,12 +10,14 @@ import WebKit
 
 class PageJockeScreeVC: UIViewController {
 
+    //MARK: - IBOutlet
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
+    //MARK: - Properties
     var jocke: String?
- 
 
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlString = "\(jocke!)"
@@ -30,11 +32,13 @@ class PageJockeScreeVC: UIViewController {
         webView.load(request)
     }
 
+    //MARK: - Methods
     @IBAction func close(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }
 
+//MARK: - Extension
 extension PageJockeScreeVC: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.stopAnimating()

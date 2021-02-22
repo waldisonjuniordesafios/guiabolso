@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+
+//MARK: - Enum
 enum EndPoint: String {
     case categorie = "categories/"
     case random = "random?category="
@@ -16,6 +18,7 @@ enum EndPoint: String {
 class Network {
     static let shared = Network()
 
+    //MARK: - Methods
     func getCategorie(router: String, completion: @escaping (Category?, Error?) -> Void) {
         AF.request(router).response { response in
             debugPrint(response)
