@@ -7,12 +7,16 @@
 
 import Foundation
 
+//MARK: - Protocol
 protocol JokeDataDelegate: class {
     func loadJoke(categories: JokeModel)
 }
 
 class JokeDataProvider {
+    //MARK: - Properties
     weak var delegate: JokeDataDelegate?
+
+    //MARK: - Methods
     func getJokeRandon(_ category: String) {
         let rota = Constants.baseURL + EndPoint.random.rawValue + category
         Network().getJokeRandon(router: rota) { (data, error) in

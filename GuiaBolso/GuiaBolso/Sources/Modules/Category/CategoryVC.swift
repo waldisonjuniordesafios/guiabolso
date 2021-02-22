@@ -37,7 +37,7 @@ class CategoryVC: UIViewController {
         static let defaultButton = "Ok"
     }
 
-    //MARK: - Life cycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
