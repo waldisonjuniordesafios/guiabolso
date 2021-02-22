@@ -1,5 +1,5 @@
 //
-//  PageJokeVC.swift
+//  PageJokeViewController.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 19/02/21.
@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class PageJokeVC: UIViewController {
+class PageJokeViewController: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var webView: WKWebView!
@@ -43,7 +43,7 @@ class PageJokeVC: UIViewController {
 }
 
 //MARK: - Extension
-extension PageJokeVC: WKNavigationDelegate, WKUIDelegate {
+extension PageJokeViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.stopAnimating()
     }

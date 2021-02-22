@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--JokeVC-->
+        <!--Joke View Controller-->
         <scene sceneID="Swq-gw-aeL">
             <objects>
-                <viewController id="Veh-MQ-6DP" customClass="JokeVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Veh-MQ-6DP" customClass="JokeViewController" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5v-yE-8Rh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,12 +72,12 @@
             </objects>
             <point key="canvasLocation" x="2813" y="125"/>
         </scene>
-        <!--Page JokeVC-->
+        <!--Page Joke View Controller-->
         <scene sceneID="vlg-xn-iH8">
             <objects>
-                <viewController id="Qwx-8A-pEe" customClass="PageJokeVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qwx-8A-pEe" customClass="PageJokeViewController" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rF4-Ey-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-TP-3dG">
@@ -141,7 +141,7 @@
         <!--Categories-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CategoryVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CategoryViewController" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

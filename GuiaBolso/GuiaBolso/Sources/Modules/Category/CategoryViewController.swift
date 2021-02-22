@@ -1,5 +1,5 @@
 //
-//  CategoryVC.swift
+//  CategoryViewController.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 18/02/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryVC: UIViewController {
+class CategoryViewController: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -91,7 +91,7 @@ class CategoryVC: UIViewController {
 }
 
 //MARK: - Extensions
-extension CategoryVC: UITableViewDataSource, UITableViewDelegate {
+extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchCategories.count > 0 {
             return self.searchCategories.count
@@ -117,12 +117,12 @@ extension CategoryVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let category = sender as? String, segue.identifier == Strings.segueJokeScreen, let vc = segue.destination as? JokeVC else { return }
+        guard let category = sender as? String, segue.identifier == Strings.segueJokeScreen, let vc = segue.destination as? JokeViewController else { return }
         vc.category = category
     }
 }
 
-extension CategoryVC: UISearchBarDelegate {
+extension CategoryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchCategories = []
         if searchText.isEmpty {
@@ -143,7 +143,7 @@ extension CategoryVC: UISearchBarDelegate {
     }
 }
 
-extension CategoryVC: CategoryDataDelegate {
+extension CategoryViewController: CategoryDataDelegate {
     func loadCategories(categories: Categories) {
         self.categories = categories
     }

@@ -1,5 +1,5 @@
 //
-//  JokeVC.swift
+//  JokeViewController.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 19/02/21.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class JokeVC: UIViewController {
+class JokeViewController: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var ivIcone: UIImageView!
@@ -64,13 +64,13 @@ class JokeVC: UIViewController {
         guard let jokeUrl = sender as! String? else { return }
         
         if segue.identifier == Strings.seguePageJoke {
-            let vc = segue.destination as? PageJokeVC
+            let vc = segue.destination as? PageJokeViewController
             vc?.jokeURL = jokeUrl
         }
     }
 }
 
-extension JokeVC: JokeDataDelegate {
+extension JokeViewController: JokeDataDelegate {
     func loadJoke(categories: JokeModel) {
         self.joke = categories
     }

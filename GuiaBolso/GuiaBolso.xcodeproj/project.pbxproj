@@ -17,11 +17,11 @@
 		929EDD3125DF41A0001AFF63 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD3025DF41A0001AFF63 /* JokeModel.swift */; };
 		929EDD3525DF4272001AFF63 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD3425DF4272001AFF63 /* Network.swift */; };
 		929EDD4025DF46F2001AFF63 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD3F25DF46F2001AFF63 /* Constants.swift */; };
-		929EDD4825DF4C99001AFF63 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD4725DF4C99001AFF63 /* CategoryVC.swift */; };
+		929EDD4825DF4C99001AFF63 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD4725DF4C99001AFF63 /* CategoryViewController.swift */; };
 		929EDD4E25DF5B5C001AFF63 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD4C25DF5B5C001AFF63 /* CategoryTableViewCell.swift */; };
 		929EDD4F25DF5B5C001AFF63 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 929EDD4D25DF5B5C001AFF63 /* CategoryTableViewCell.xib */; };
-		929EDD5825DFDB18001AFF63 /* JokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD5725DFDB17001AFF63 /* JokeVC.swift */; };
-		929EDD5F25DFEEBA001AFF63 /* PageJokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD5E25DFEEBA001AFF63 /* PageJokeVC.swift */; };
+		929EDD5825DFDB18001AFF63 /* JokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD5725DFDB17001AFF63 /* JokeViewController.swift */; };
+		929EDD5F25DFEEBA001AFF63 /* PageJokeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929EDD5E25DFEEBA001AFF63 /* PageJokeViewController.swift */; };
 		92B3A2BA25E41BD800F9B734 /* CategoryDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B3A2B925E41BD800F9B734 /* CategoryDataProvider.swift */; };
 		92B3A2BD25E42C3700F9B734 /* JokeDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B3A2BC25E42C3700F9B734 /* JokeDataProvider.swift */; };
 /* End PBXBuildFile section */
@@ -40,11 +40,11 @@
 		929EDD3025DF41A0001AFF63 /* JokeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
 		929EDD3425DF4272001AFF63 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		929EDD3F25DF46F2001AFF63 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		929EDD4725DF4C99001AFF63 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		929EDD4725DF4C99001AFF63 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		929EDD4C25DF5B5C001AFF63 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		929EDD4D25DF5B5C001AFF63 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
-		929EDD5725DFDB17001AFF63 /* JokeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeVC.swift; sourceTree = "<group>"; };
-		929EDD5E25DFEEBA001AFF63 /* PageJokeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageJokeVC.swift; sourceTree = "<group>"; };
+		929EDD5725DFDB17001AFF63 /* JokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewController.swift; sourceTree = "<group>"; };
+		929EDD5E25DFEEBA001AFF63 /* PageJokeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageJokeViewController.swift; sourceTree = "<group>"; };
 		92B3A2B925E41BD800F9B734 /* CategoryDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDataProvider.swift; sourceTree = "<group>"; };
 		92B3A2BC25E42C3700F9B734 /* JokeDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDataProvider.swift; sourceTree = "<group>"; };
 		C28E79F951EC1432EDA6622F /* Pods-GuiaBolso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuiaBolso.release.xcconfig"; path = "Target Support Files/Pods-GuiaBolso/Pods-GuiaBolso.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				929EDD4B25DF5B44001AFF63 /* Cells */,
-				929EDD4725DF4C99001AFF63 /* CategoryVC.swift */,
+				929EDD4725DF4C99001AFF63 /* CategoryViewController.swift */,
 				92B3A2B925E41BD800F9B734 /* CategoryDataProvider.swift */,
 			);
 			path = Category;
@@ -211,7 +211,7 @@
 		929EDD5625DFDAF6001AFF63 /* Joke */ = {
 			isa = PBXGroup;
 			children = (
-				929EDD5725DFDB17001AFF63 /* JokeVC.swift */,
+				929EDD5725DFDB17001AFF63 /* JokeViewController.swift */,
 				92B3A2BC25E42C3700F9B734 /* JokeDataProvider.swift */,
 			);
 			path = Joke;
@@ -220,7 +220,7 @@
 		929EDD5C25DFEE93001AFF63 /* PageJoke */ = {
 			isa = PBXGroup;
 			children = (
-				929EDD5E25DFEEBA001AFF63 /* PageJokeVC.swift */,
+				929EDD5E25DFEEBA001AFF63 /* PageJokeViewController.swift */,
 			);
 			path = PageJoke;
 			sourceTree = "<group>";
@@ -341,11 +341,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				929EDD3125DF41A0001AFF63 /* JokeModel.swift in Sources */,
-				929EDD5F25DFEEBA001AFF63 /* PageJokeVC.swift in Sources */,
-				929EDD5825DFDB18001AFF63 /* JokeVC.swift in Sources */,
+				929EDD5F25DFEEBA001AFF63 /* PageJokeViewController.swift in Sources */,
+				929EDD5825DFDB18001AFF63 /* JokeViewController.swift in Sources */,
 				929EDD3525DF4272001AFF63 /* Network.swift in Sources */,
 				929EDD2E25DF416D001AFF63 /* CategoryModel.swift in Sources */,
-				929EDD4825DF4C99001AFF63 /* CategoryVC.swift in Sources */,
+				929EDD4825DF4C99001AFF63 /* CategoryViewController.swift in Sources */,
 				929EDD4025DF46F2001AFF63 /* Constants.swift in Sources */,
 				92B3A2BD25E42C3700F9B734 /* JokeDataProvider.swift in Sources */,
 				92B3A2BA25E41BD800F9B734 /* CategoryDataProvider.swift in Sources */,
