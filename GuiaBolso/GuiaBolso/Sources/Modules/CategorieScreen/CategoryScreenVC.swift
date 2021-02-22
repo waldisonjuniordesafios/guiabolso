@@ -1,5 +1,5 @@
 //
-//  CategorieScreenVC.swift
+//  CategoryScreenVC.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 18/02/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategorieScreenVC: UIViewController {
+class CategoryScreenVC: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -17,11 +17,19 @@ class CategorieScreenVC: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
     //MARK: - Properties
-    fileprivate var categories = [String]()
-    fileprivate var searchCategories = [String]()
-    fileprivate var categoriesCount: Int = 0
+    private var categories = [String]()
+    private var searchCategories = [String]()
+    private var categoriesCount: Int = 0
 
-    let cellID = "CategorieTableViewCell"
+    private enum Strings {
+        static let cellID = "CategoryTableViewCell"
+        static let segueJokeScreen = "JokeScreen"
+        static let defaultTitle = "Error"
+        static let defaultMessage = "Service unavailable, try later!"
+        static let defaultButton = "Ok"
+    }
+
+//    private let cellID = "CategorieTableViewCell"
 
     //MARK: - Life cycle
     override func viewDidLoad() {
@@ -49,29 +57,28 @@ class CategorieScreenVC: UIViewController {
 
 
     //MARK: - Methods
-    fileprivate func setupTableView() {
+    private func setupTableView() {
         self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
 
-        self.tableView.register(UINib(nibName: cellID, bundle: nil), forCellReuseIdentifier: cellID)
+        self.tableView.register(UINib(nibName: Strings.cellID, bundle: nil), forCellReuseIdentifier: Strings.cellID)
 
         self.vwCircle.layer.cornerRadius = 8
     }
 
-    fileprivate func getCategories() {
-        let router = Constants.baseURL + EndPoint.categorie.rawValue
+    private func getCategories() {
+        let router = Constants.baseURL + EndPoint.categories.rawValue
         Network.shared.getCategorie(router: router) { (data, error) in
-            if data == nil {
-                let alert = UIAlertController(title: "Error", message: "Service unavailable, try later!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+            guard let data = data else {
+                self.showAlert(title: Strings.defaultTitle, message: Strings.defaultMessage)
                 print("Error")
-            } else {
-                self.categories.append(contentsOf: data!)
-                self.searchCategories.append(contentsOf: data!)
+                return
             }
+
+            self.categories.append(contentsOf: data)
+            self.searchCategories.append(contentsOf: data)
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -82,13 +89,19 @@ class CategorieScreenVC: UIViewController {
         }
     }
 
-    fileprivate func countCategories() {
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: Strings.defaultButton, style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    private func countCategories() {
         self.lblNumberOfCategorie.text = String(self.searchCategories.count)
     }
 }
 
 //MARK: - Extensions
-extension CategorieScreenVC: UITableViewDataSource, UITableViewDelegate {
+extension CategoryScreenVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchCategories.count > 0 {
             return self.searchCategories.count
@@ -99,40 +112,36 @@ extension CategorieScreenVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if self.searchCategories.count > 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategorieTableViewCell
-            cell.lblCategorieName.text = searchCategories[indexPath.row].capitalized
-            return cell
-        } else {
-            let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-            cell.textLabel?.text = "No results"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: Strings.cellID, for: indexPath) as? CategoryTableViewCell else { return UITableViewCell()
+            }
+            cell.lblCategoryName.text = searchCategories[indexPath.row].capitalized
             return cell
         }
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var categorie = String()
         categorie = self.searchCategories[indexPath.row]
-        self.performSegue(withIdentifier: "JockeScreen", sender: categorie)
+        self.performSegue(withIdentifier: Strings.segueJokeScreen, sender: categorie)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "JockeScreen" {
-            let vc = segue.destination as? JockeScreenVC
-            vc?.categorie = sender! as! String
-        }
+        guard let category = sender as? String, segue.identifier == Strings.segueJokeScreen, let vc = segue.destination as? JokeScreenVC else { return }
+        vc.category = category
     }
 }
 
-extension CategorieScreenVC: UISearchBarDelegate {
+extension CategoryScreenVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchCategories = []
         if searchText.isEmpty {
             self.searchCategories = self.categories
             self.countCategories()
         } else {
-            for a in categories {
-                if a.lowercased().contains(searchText.lowercased()) {
-                    searchCategories.append(a)
+            for category in categories {
+                if category.lowercased().contains(searchText.lowercased()) {
+                    searchCategories.append(category)
                     self.countCategories()
                 } else {
                     self.countCategories()
@@ -142,4 +151,3 @@ extension CategorieScreenVC: UISearchBarDelegate {
         self.tableView.reloadData()
     }
 }
-

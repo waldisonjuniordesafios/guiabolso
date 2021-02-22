@@ -1,5 +1,5 @@
 //
-//  PageJockeScreeVC.swift
+//  PageJokeScreenVC.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 19/02/21.
@@ -8,19 +8,20 @@
 import UIKit
 import WebKit
 
-class PageJockeScreeVC: UIViewController {
+class PageJokeScreenVC: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
     //MARK: - Properties
-    var jocke: String?
+    var jokeURL: String?
 
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let urlString = "\(jocke!)"
+        guard let joke = jokeURL else { return }
+        let urlString = "\(joke)"
         
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
@@ -39,7 +40,7 @@ class PageJockeScreeVC: UIViewController {
 }
 
 //MARK: - Extension
-extension PageJockeScreeVC: WKNavigationDelegate, WKUIDelegate {
+extension PageJokeScreenVC: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loading.stopAnimating()
     }

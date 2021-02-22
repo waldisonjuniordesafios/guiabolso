@@ -11,7 +11,7 @@ import Alamofire
 
 //MARK: - Enum
 enum EndPoint: String {
-    case categorie = "categories/"
+    case categories = "categories/"
     case random = "random?category="
 }
 
@@ -22,11 +22,13 @@ class Network {
     func getCategorie(router: String, completion: @escaping (Category?, Error?) -> Void) {
         AF.request(router).response { response in
             debugPrint(response)
-            if response.response?.statusCode != 200 {
+            guard let data = response.data, response.response?.statusCode == 200 else {
                 completion(nil, response.error)
+                print("Service unavailable, try later!")
+                return
             }
             do {
-                let result = try JSONDecoder().decode(Category.self, from: response.data!)
+                let result = try JSONDecoder().decode(Category.self, from: data)
                     completion(result, nil)
             } catch {
                 print("Erro decoding == \(Error.self)")
@@ -35,15 +37,16 @@ class Network {
         }
     }
 
-    func getJockeRandon(router: String, completion: @escaping (JockeModel?, Error?) -> Void) {
+    func getJokeRandon(router: String, completion: @escaping (JokeModel?, Error?) -> Void) {
         AF.request(router).response { response in
             debugPrint(response)
-            if response.response?.statusCode != 200 {
-                print("Service unavailable, try later!")
+            guard let data = response.data, response.response?.statusCode == 200 else {
                 completion(nil, response.error)
+                print("Service unavailable, try later!")
+                return
             }
             do {
-                let result = try JSONDecoder().decode(JockeModel.self, from: response.data!)
+                let result = try JSONDecoder().decode(JokeModel.self, from: data)
                     completion(result, nil)
             } catch {
                 print(error)

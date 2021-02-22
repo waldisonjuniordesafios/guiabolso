@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Jocke ScreenVC-->
+        <!--Joke ScreenVC-->
         <scene sceneID="Swq-gw-aeL">
             <objects>
-                <viewController id="Veh-MQ-6DP" customClass="JockeScreenVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Veh-MQ-6DP" customClass="JokeScreenVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5v-yE-8Rh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,7 @@
                                     <color key="titleColor" name="PinkColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="openPageJocke:" destination="Veh-MQ-6DP" eventType="touchUpInside" id="B2A-wR-nR9"/>
+                                    <action selector="openPageJoke:" destination="Veh-MQ-6DP" eventType="touchUpInside" id="im6-g8-xK2"/>
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6Ug-JX-sSa">
@@ -63,21 +63,21 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ivIcone" destination="2NF-Ec-emz" id="XHd-nN-kdP"/>
-                        <outlet property="lblContentJocke" destination="hwQ-Pn-mvz" id="4fi-nO-9Wz"/>
+                        <outlet property="lblContentJoke" destination="hwQ-Pn-mvz" id="L4C-PX-qzk"/>
                         <outlet property="loading" destination="6Ug-JX-sSa" id="Ieu-4Z-idQ"/>
-                        <segue destination="Qwx-8A-pEe" kind="presentation" identifier="PageJacke" id="Bph-mg-TUD"/>
+                        <segue destination="Qwx-8A-pEe" kind="presentation" identifier="PageJoke" id="Bph-mg-TUD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2V-Sj-zHX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2813" y="125"/>
         </scene>
-        <!--Page Jocke ScreeVC-->
+        <!--Page Joke ScreenVC-->
         <scene sceneID="vlg-xn-iH8">
             <objects>
-                <viewController id="Qwx-8A-pEe" customClass="PageJockeScreeVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qwx-8A-pEe" customClass="PageJokeScreenVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rF4-Ey-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-TP-3dG">
@@ -141,7 +141,7 @@
         <!--Categories-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CategorieScreenVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CategoryScreenVC" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                         <outlet property="searchBar" destination="fyE-A4-XUE" id="dVF-Hp-Jsh"/>
                         <outlet property="tableView" destination="1n9-AP-rXP" id="Rn8-40-oMQ"/>
                         <outlet property="vwCircle" destination="Vh7-xG-K3r" id="uhE-Mn-tMe"/>
-                        <segue destination="Veh-MQ-6DP" kind="show" identifier="JockeScreen" id="XDp-L8-628"/>
+                        <segue destination="Veh-MQ-6DP" kind="show" identifier="JokeScreen" id="XDp-L8-628"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

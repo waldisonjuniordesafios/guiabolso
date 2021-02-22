@@ -1,5 +1,5 @@
 //
-//  JockeModel.swift
+//  JokeModel.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 18/02/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JockeModel: Codable {
+struct JokeModel: Codable {
     let categories: [String]
     let iconURL: String
     let url: String

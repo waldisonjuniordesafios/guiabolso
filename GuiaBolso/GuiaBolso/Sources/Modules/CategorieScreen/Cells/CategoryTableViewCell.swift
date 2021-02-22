@@ -1,5 +1,5 @@
 //
-//  CategorieTableViewCell.swift
+//  CategoryTableViewCell.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 18/02/21.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CategorieTableViewCell: UITableViewCell {
+class CategoryTableViewCell: UITableViewCell {
 
     //MARK: - IBOutlet
-    @IBOutlet weak var lblCategorieName: UILabel!
+    @IBOutlet weak var lblCategoryName: UILabel!
 
     //MARK: - Life cycle
     override func awakeFromNib() {
