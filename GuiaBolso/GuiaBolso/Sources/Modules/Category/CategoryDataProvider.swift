@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //MARK: - Protocol
 protocol CategoryDataDelegate: class {

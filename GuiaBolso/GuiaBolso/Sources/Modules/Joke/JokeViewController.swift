@@ -29,6 +29,7 @@ class JokeViewController: UIViewController {
         }
     }
 
+    //MARK: - Enum
     private enum Strings {
         static let seguePageJoke = "PageJoke"
     }
@@ -70,6 +71,7 @@ class JokeViewController: UIViewController {
     }
 }
 
+//MARK: - Extension
 extension JokeViewController: JokeDataDelegate {
     func loadJoke(categories: JokeModel) {
         self.joke = categories
