@@ -1,5 +1,5 @@
 //
-//  CategoryScreenVC.swift
+//  CategoryVC.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 18/02/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryScreenVC: UIViewController {
+class CategoryVC: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -17,9 +17,17 @@ class CategoryScreenVC: UIViewController {
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
     //MARK: - Properties
-    private var categories = [String]()
+    private var categories: [String]? {
+        didSet {
+            self.searchCategories = self.categories ?? []
+            self.lblNumberOfCategorie.text = String(self.searchCategories.count)
+            self.tableView.reloadData()
+            self.loading.stopAnimating()
+        }
+    }
     private var searchCategories = [String]()
     private var categoriesCount: Int = 0
+    private let dataProvider = CategoryDataProvider()
 
     private enum Strings {
         static let cellID = "CategoryTableViewCell"
@@ -67,24 +75,8 @@ class CategoryScreenVC: UIViewController {
     }
 
     private func getCategories() {
-        let router = Constants.baseURL + EndPoint.categories.rawValue
-        Network.shared.getCategorie(router: router) { (data, error) in
-            guard let data = data else {
-                self.showAlert(title: Strings.defaultTitle, message: Strings.defaultMessage)
-                print("Error")
-                return
-            }
-
-            self.categories.append(contentsOf: data)
-            self.searchCategories.append(contentsOf: data)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.searchCategories = self.categories
-                self.lblNumberOfCategorie.text = String(self.searchCategories.count)
-            }
-            self.loading.stopAnimating()
-        }
+        dataProvider.delegate = self
+        dataProvider.getCategories()
     }
 
     private func showAlert(title: String, message: String) {
@@ -99,7 +91,7 @@ class CategoryScreenVC: UIViewController {
 }
 
 //MARK: - Extensions
-extension CategoryScreenVC: UITableViewDataSource, UITableViewDelegate {
+extension CategoryVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchCategories.count > 0 {
             return self.searchCategories.count
@@ -125,18 +117,19 @@ extension CategoryScreenVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let category = sender as? String, segue.identifier == Strings.segueJokeScreen, let vc = segue.destination as? JokeScreenVC else { return }
+        guard let category = sender as? String, segue.identifier == Strings.segueJokeScreen, let vc = segue.destination as? JokeVC else { return }
         vc.category = category
     }
 }
 
-extension CategoryScreenVC: UISearchBarDelegate {
+extension CategoryVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchCategories = []
         if searchText.isEmpty {
-            self.searchCategories = self.categories
+            self.searchCategories = self.categories ?? []
             self.countCategories()
         } else {
+            guard let categories = categories else { return }
             for category in categories {
                 if category.lowercased().contains(searchText.lowercased()) {
                     searchCategories.append(category)
@@ -147,5 +140,11 @@ extension CategoryScreenVC: UISearchBarDelegate {
             }
         }
         self.tableView.reloadData()
+    }
+}
+
+extension CategoryVC: CategoryDataDelegate {
+    func loadCategories(categories: Categories) {
+        self.categories = categories
     }
 }

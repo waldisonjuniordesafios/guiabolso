@@ -7,4 +7,4 @@
 
 import Foundation
 
-typealias Category = [String]
+typealias Categories = [String]

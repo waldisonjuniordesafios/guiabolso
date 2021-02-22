@@ -16,10 +16,9 @@ enum EndPoint: String {
 }
 
 class Network {
-    static let shared = Network()
 
     //MARK: - Methods
-    func getCategorie(router: String, completion: @escaping (Category?, Error?) -> Void) {
+    func getCategorie(router: String, completion: @escaping (Categories?, Error?) -> Void) {
         AF.request(router).response { response in
             debugPrint(response)
             guard let data = response.data, response.response?.statusCode == 200 else {
@@ -28,7 +27,7 @@ class Network {
                 return
             }
             do {
-                let result = try JSONDecoder().decode(Category.self, from: data)
+                let result = try JSONDecoder().decode(Categories.self, from: data)
                     completion(result, nil)
             } catch {
                 print("Erro decoding == \(Error.self)")

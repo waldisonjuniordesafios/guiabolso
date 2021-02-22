@@ -1,5 +1,5 @@
 //
-//  JokeModel.swift
+//  JokeVC.swift
 //  GuiaBolso
 //
 //  Created by Junior Fernandes on 19/02/21.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class JokeScreenVC: UIViewController {
+class JokeVC: UIViewController {
 
     //MARK: - IBOutlet
     @IBOutlet weak var ivIcone: UIImageView!
@@ -18,7 +18,16 @@ class JokeScreenVC: UIViewController {
     
     //MARK: - Properties
     var category = String()
-    private var joke: JokeModel?
+    private let dataProvider = JokeDataProvider()
+    private var joke: JokeModel? {
+        didSet {
+            self.lblContentJoke.text = self.joke?.value
+            guard let image = self.joke?.iconURL else { return }
+            self.ivIcone.kf.setImage(with: URL(string: image), placeholder: UIImage(systemName: "camera"), options: [.keepCurrentImageWhileLoading, .transition(ImageTransition.fade(0.5))], completionHandler: nil)
+            self.ivIcone.kf.indicatorType = .activity
+            self.loading.stopAnimating()
+        }
+    }
 
     private enum Strings {
         static let seguePageJoke = "PageJoke"
@@ -43,17 +52,8 @@ class JokeScreenVC: UIViewController {
     }
 
     private func getJokeRandon(_ category: String) {
-        let rota = Constants.baseURL + EndPoint.random.rawValue + category
-        Network.shared.getJokeRandon(router: rota) { (data, error) in
-            DispatchQueue.main.async {
-                self.joke = data
-                self.lblContentJoke.text = self.joke?.value
-                guard let image = self.joke?.iconURL else { return }
-                self.ivIcone.kf.setImage(with: URL(string: image), placeholder: UIImage(systemName: "camera"), options: [.keepCurrentImageWhileLoading, .transition(ImageTransition.fade(0.5))], completionHandler: nil)
-            }
-            self.ivIcone.kf.indicatorType = .activity
-            self.loading.stopAnimating()
-        }
+        dataProvider.delegate = self
+        dataProvider.getJokeRandon(category)
     }
 
     @IBAction func openPageJoke(_ sender: UIButton) {
@@ -64,8 +64,14 @@ class JokeScreenVC: UIViewController {
         guard let jokeUrl = sender as! String? else { return }
         
         if segue.identifier == Strings.seguePageJoke {
-            let vc = segue.destination as? PageJokeScreenVC
+            let vc = segue.destination as? PageJokeVC
             vc?.jokeURL = jokeUrl
         }
+    }
+}
+
+extension JokeVC: JokeDataDelegate {
+    func loadJoke(categories: JokeModel) {
+        self.joke = categories
     }
 }
