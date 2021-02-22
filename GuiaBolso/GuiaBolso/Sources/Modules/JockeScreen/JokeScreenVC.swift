@@ -15,9 +15,10 @@ class JokeScreenVC: UIViewController {
     @IBOutlet weak var lblContentJoke: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
 
+    
     //MARK: - Properties
     var category = String()
-    var joke: JokeModel?
+    private var joke: JokeModel?
 
     private enum Strings {
         static let seguePageJoke = "PageJoke"
@@ -37,11 +38,11 @@ class JokeScreenVC: UIViewController {
 
 
     //MARK: - Methods
-    func setupView() {
+    private func setupView() {
         self.navigationItem.title = category.capitalized
     }
 
-    func getJokeRandon(_ category: String) {
+    private func getJokeRandon(_ category: String) {
         let rota = Constants.baseURL + EndPoint.random.rawValue + category
         Network.shared.getJokeRandon(router: rota) { (data, error) in
             DispatchQueue.main.async {

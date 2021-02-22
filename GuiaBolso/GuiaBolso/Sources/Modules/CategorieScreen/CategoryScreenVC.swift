@@ -29,8 +29,6 @@ class CategoryScreenVC: UIViewController {
         static let defaultButton = "Ok"
     }
 
-//    private let cellID = "CategorieTableViewCell"
-
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

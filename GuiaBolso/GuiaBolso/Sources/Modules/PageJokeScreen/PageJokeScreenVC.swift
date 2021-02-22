@@ -17,12 +17,15 @@ class PageJokeScreenVC: UIViewController {
     //MARK: - Properties
     var jokeURL: String?
 
-    //MARK: - Life cycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupWebView()
+    }
+
+    private func setupWebView() {
         guard let joke = jokeURL else { return }
         let urlString = "\(joke)"
-        
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
 
