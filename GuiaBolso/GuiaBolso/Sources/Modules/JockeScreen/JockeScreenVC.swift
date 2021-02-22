@@ -20,7 +20,8 @@ class JockeScreenVC: UIViewController {
     var categorie = String()
     var jocke: JockeModel?
 
-    //MARK: - Lifecycles
+
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getJockeRandon(categorie: categorie)
@@ -30,6 +31,7 @@ class JockeScreenVC: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+
 
     //MARK: - Methods
     func setupView() {

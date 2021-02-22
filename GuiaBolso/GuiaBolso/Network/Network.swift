@@ -20,16 +20,14 @@ class Network {
         AF.request(router).response { response in
             debugPrint(response)
             if response.response?.statusCode != 200 {
-                print("ERROR")
+                print("Service unavailable, try later!")
                 completion(nil, response.error)
             }
             do {
                 let result = try JSONDecoder().decode(Category.self, from: response.data!)
-                if result != nil {
                     completion(result, nil)
-                }
             } catch {
-                print(error)
+                print("Erro decoding == \(Error.self)")
             }
         }
     }
@@ -38,16 +36,12 @@ class Network {
         AF.request(router).response { response in
             debugPrint(response)
             if response.response?.statusCode != 200 {
-                print("ERROR")
+                print("Service unavailable, try later!")
                 completion(nil, response.error)
             }
             do {
                 let result = try JSONDecoder().decode(JockeModel.self, from: response.data!)
-                if result != nil {
                     completion(result, nil)
-                } else {
-                    print("ERROR")
-                }
             } catch {
                 print(error)
             }

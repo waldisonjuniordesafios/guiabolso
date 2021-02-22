@@ -67,8 +67,8 @@ class CategorieScreenVC: UIViewController {
             guard error == nil else{
                 return
             }
-            self.categories.append(contentsOf: data!!)
-            self.searchCategories.append(contentsOf: data!!)
+            self.categories.append(contentsOf: data!)
+            self.searchCategories.append(contentsOf: data!)
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
