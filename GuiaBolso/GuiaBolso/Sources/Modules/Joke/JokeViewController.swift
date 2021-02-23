@@ -45,6 +45,9 @@ class JokeViewController: UIViewController {
     @IBAction func openPageJoke(_ sender: UIButton) {
         self.performSegue(withIdentifier: Constants.seguePageJoke, sender: self.url)
     }
+    @IBAction func update(_ sender: UIBarButtonItem) {
+        self.getJokeRandon(category)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let jokeUrl = sender as! String? else { return }
@@ -59,9 +62,9 @@ class JokeViewController: UIViewController {
 //MARK: - Extension
 extension JokeViewController: JokeDataDelegate {
     func loadJoke(categories: JokeModel) {
-        self.lblContentJoke.text = categories.value
         let image = String(categories.iconURL)
         self.ivIcone.kf.setImage(with: URL(string: image), placeholder: UIImage(systemName: "camera"), options: [.keepCurrentImageWhileLoading, .transition(ImageTransition.fade(0.5))], completionHandler: nil)
+        self.lblContentJoke.text = categories.value
         self.url = categories.url
         self.ivIcone.kf.indicatorType = .activity
         self.loading.stopAnimating()

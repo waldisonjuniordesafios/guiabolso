@@ -60,6 +60,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="9qE-IJ-7b8">
                         <barButtonItem key="backBarButtonItem" title=" " id="d6M-ek-abM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="a2W-Me-geW">
+                            <color key="tintColor" name="PinkColor"/>
+                            <connections>
+                                <action selector="update:" destination="Veh-MQ-6DP" id="YFR-Go-brD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ivIcone" destination="2NF-Ec-emz" id="XHd-nN-kdP"/>
@@ -77,7 +83,7 @@
             <objects>
                 <viewController id="Qwx-8A-pEe" customClass="PageJokeViewController" customModule="GuiaBolso" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rF4-Ey-jLn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqb-TP-3dG">
