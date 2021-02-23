@@ -15,6 +15,7 @@ protocol JokeDataDelegate: class {
 class JokeDataProvider {
     //MARK: - Properties
     weak var delegate: JokeDataDelegate?
+    var category = String()
 
     //MARK: - Methods
     func getJokeRandon(_ category: String) {

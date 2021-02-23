@@ -15,12 +15,11 @@ class CategoryTableViewCell: UITableViewCell {
     //MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    //MARK: - Methods
+    func setupCell(category: Categories, indexPath: Int) {
+        self.lblCategoryName.text = category[indexPath].capitalized
     }
     
 }
